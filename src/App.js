@@ -20,6 +20,9 @@ const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+Button{
+margin: 5px;
+}
 
 `;
 
@@ -33,8 +36,7 @@ function App() {
 
     useEffect(() => {
         db.collection('todos').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
-            // console.log(snapshot.docs.map(doc => doc.data().todo));
-            setTodos(snapshot.docs.map(doc => doc.data().todo));
+            setTodos(snapshot.docs.map(doc => ({id: doc.id, todo: doc.data().todo})));
         })
     }, []);
 
@@ -64,8 +66,6 @@ function App() {
                     {todos.map(todo => (
                         <Todo text={todo}/>
                     ))}
-                    {/*<li></li>*/}
-                    {/*<li></li>*/}
                 </ul>
             </Wrapper>
         </Layout>
