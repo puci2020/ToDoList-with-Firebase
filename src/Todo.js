@@ -56,7 +56,7 @@ const Todo = (props) => {
             </ModalWrapper>
         <List>
             <ListItem>
-                <ListItemText primary={props.text.todo} secondary="Dummy deadline!!!"/>
+                <ListItemText primary={props.text.todo} secondary="Deadline!!!"/>
             </ListItem>
             <Button variant="contained" color="secondary" onClick={event => db.collection('todos').doc(props.text.id).delete()}>Delete</Button>
             <Button variant="contained" color="primary" onClick={handleOpen}>Edit</Button>
